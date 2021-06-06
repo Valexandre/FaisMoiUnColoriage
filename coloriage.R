@@ -82,8 +82,12 @@ FaisMoiUnColoriage<-function(urlimage,rangsimplif,nombrecouleurs,titre){
   Solution<-ggplot(CoulSimpl,aes(ordrex,ordrey))+geom_tile(aes(fill=couleur))+
     scale_fill_identity()+scale_y_reverse()+
     coord_fixed(ratio=1)+theme_void()
+  dim(Lettres)
+  x=1500/dim(tableau1im)[1]
   
-  sortunjpeg(PosLeg+Lettres+patchwork::plot_layout(heights = c(1,10)),1500,1500,paste0("ACOLORIER ",titre))
+  sortunjpeg(PosLeg+Lettres+patchwork::plot_layout(heights = c(1,10),),
+             dim(tableau1im)[1]*(1500/dim(tableau1im)[1]),
+             dim(tableau1im)[2]*(1500/dim(tableau1im)[1]),paste0("ACOLORIER ",titre))
   sortunjpeg(Solution,1500,1500,paste0("SOLUTION ",titre))
   
 }
